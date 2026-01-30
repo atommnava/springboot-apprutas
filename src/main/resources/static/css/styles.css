@@ -2,33 +2,33 @@ body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #2ecc71, #27ae60);
     color: #fff;
-    }
-    
-    .container {
+}
+
+.container {
     width: 400px;
     margin: 80px auto;
     background: #1e272e;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    }
-    
-    h1, h2 {
+}
+
+h1, h2 {
     text-align: center;
-    }
-    
-    label {
+}
+
+label {
     display: block;
     margin-top: 15px;
-    }
-    
-    input {
+}
+
+input {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
-    }
-    
-    button {
+}
+
+button {
     margin-top: 20px;
     width: 100%;
     padding: 10px;
@@ -36,13 +36,13 @@ body {
     border: none;
     font-size: 16px;
     cursor: pointer;
-    }
-    
-    button:hover {
+}
+
+button:hover {
     background: #27ae60;
-    }
-    
-    a {
+}
+
+a {
     color: #2ecc71;
     text-decoration: none;
-    }
+}
