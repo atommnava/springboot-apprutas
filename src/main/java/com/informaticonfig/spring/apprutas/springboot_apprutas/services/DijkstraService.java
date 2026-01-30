@@ -1,4 +1,4 @@
-package com.informaticonfig.spring.apprutas.springboot_apprutas.service;
+package com.informaticonfig.spring.apprutas.springboot_apprutas.services;
 
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -7,7 +7,7 @@ import java.util.*;
 public class DijkstraService {
 
     public ResultadoRuta calcularRuta(String origen, String destino) {
-        // Grafo simple de ejemplo
+
         Map<String, Map<String, Integer>> grafo = new HashMap<>();
 
         grafo.put("A", Map.of("B", 5, "C", 10));
@@ -17,18 +17,22 @@ public class DijkstraService {
 
         Map<String, Integer> distancias = new HashMap<>();
         Map<String, String> previo = new HashMap<>();
-        PriorityQueue<String> cola = new PriorityQueue<>(Comparator.comparingInt(distancias::get));
+        PriorityQueue<String> cola =
+                new PriorityQueue<>(Comparator.comparingInt(distancias::get));
 
         for (String nodo : grafo.keySet()) {
             distancias.put(nodo, Integer.MAX_VALUE);
         }
+
         distancias.put(origen, 0);
         cola.add(origen);
 
         while (!cola.isEmpty()) {
             String actual = cola.poll();
+
             for (var vecino : grafo.get(actual).entrySet()) {
                 int nuevaDist = distancias.get(actual) + vecino.getValue();
+
                 if (nuevaDist < distancias.get(vecino.getKey())) {
                     distancias.put(vecino.getKey(), nuevaDist);
                     previo.put(vecino.getKey(), actual);
@@ -37,7 +41,6 @@ public class DijkstraService {
             }
         }
 
-        // Reconstrucción de ruta
         List<String> ruta = new ArrayList<>();
         for (String at = destino; at != null; at = previo.get(at)) {
             ruta.add(at);
@@ -45,7 +48,7 @@ public class DijkstraService {
         Collections.reverse(ruta);
 
         int distancia = distancias.get(destino);
-        double combustibleAhorrado = distancia * 0.05; // Ejemplo
+        double combustibleAhorrado = distancia * 0.05;
 
         return new ResultadoRuta(ruta, distancia, combustibleAhorrado);
     }
